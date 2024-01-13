@@ -11,11 +11,17 @@ const hotelSchema = new Schema({
           _id: { type: objectId, auto: true },
           type: { type: String, required: true },
           capacity: { type: Number, required: true },
-          availability: { type: Boolean, default: true },
           price: { type: Number, required: true },
         }
+      ],    
+      ratings: [
+        {
+            _id: { type: objectId, auto: true },
+            rating: { type: Number, required: true, min: 1, max: 5 },
+            comment: { type: String },
+            guestName: {type:String,require:true}
+        }
       ],
-     
  }, {
         versionKey: false
 });

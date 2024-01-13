@@ -27,16 +27,16 @@ class BaseController{
         return res.status(httpStatusCodes.StatusCodes.UNAUTHORIZED).send({message:'Unauthorized'});
     }
     forbidden(res,message){
-        return res.status(httpStatusCodes.StatusCodes.FORBIDDEN).send({message: 'Forbidden'});
+        return res.status(httpStatusCodes.StatusCodes.FORBIDDEN).send({message: 'Forbidden: '+message});
 
     }
     notFound(res,message){
-        return res.status(httpStatusCodes.StatusCodes.NOT_FOUND).send({message: 'Not Found'});
+        return res.status(httpStatusCodes.StatusCodes.NOT_FOUND).send({message: 'Not Found: '+ message});
 
     }
     internalServerError(res,message){
         return res.status(httpStatusCodes.StatusCodes.INTERNAL_SERVER_ERROR).send({
-            message:'Internal Server Error'
+            message:'Internal Server Error: '+ message
         });
     }
     //common db operations

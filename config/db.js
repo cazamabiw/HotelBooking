@@ -11,5 +11,5 @@ mongoose.connection.on('error',err=>{
 });
 
 mongoose.connection.on('connected',res=>{
-    console.log('connected');
+    console.log('connected: '+res);
 });

@@ -5,6 +5,7 @@ class HotelRepository extends BaseRepository{
     constructor(){
         super(hotel);     
     }
+    //specific methods
     addRoom(hotelId, roomDetails) {
         const updateQuery = {
             $push: { rooms: roomDetails },
@@ -38,6 +39,25 @@ class HotelRepository extends BaseRepository{
         };
         return this.collection.findOneAndUpdate({ _id: hotelId }, updateQuery, options);
     }
+
+    addRating(hotelId, ratingDetails) {
+        const updateQuery = {
+            $push: { ratings: ratingDetails },
+        };
+        const options = { new: true };
+
+        return this.collection.findOneAndUpdate({ _id: hotelId }, updateQuery, options);
+    }
+
+    deleteRating(hotelId, ratingId) {
+        const updateQuery = {
+            $pull: { ratings: { _id: ratingId } },
+        };
+        const options = { new: true };
+
+        return this.collection.findOneAndUpdate({ _id: hotelId }, updateQuery, options);
+    }
+    
 }
 
 module.exports = HotelRepository;

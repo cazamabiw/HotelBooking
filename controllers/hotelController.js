@@ -45,5 +45,31 @@ class HotelController extends BaseController{
             });
     };
     
+    addRating = (req, res) => {
+        const hotelId = req.params.id;
+        const ratingDetails = req.body;
+
+        this.repo.addRating(hotelId, ratingDetails)
+            .then(doc => {
+                return this.created(res, doc); 
+            })
+            .catch(err => {
+                return this.internalServerError(res, err);
+            });
+    };
+
+    deleteRating = (req, res) => {
+        const hotelId = req.params.id;
+        const ratingId = req.params.ratingId;
+
+        this.repo.deleteRating(hotelId, ratingId)
+            .then(doc => {
+                return this.deleted(res, doc);
+            })
+            .catch(err => {
+                return this.internalServerError(res, err);
+            });
+    };
+
 }
 module.exports=HotelController;
